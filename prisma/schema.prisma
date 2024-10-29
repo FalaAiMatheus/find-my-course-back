@@ -13,6 +13,7 @@ model Colleges {
   category_id Int @unique
   street_id Int @unique
   courses Courses[]
+  rating Float
   category Categorys? @relation(fields: [category_id], references: [id])
   street Streets? @relation(fields: [street_id], references: [id])
 
