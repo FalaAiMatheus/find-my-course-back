@@ -6,3 +6,51 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Colleges {
+  id Int @id @default(autoincrement())
+  name String
+  category_id Int @unique
+  street_id Int @unique
+  courses Courses[]
+  category Categorys? @relation(fields: [category_id], references: [id])
+  street Streets? @relation(fields: [street_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("colleges")
+}
+
+model Courses {
+  id Int @id @default(autoincrement())
+  name String
+  colleges Colleges[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("courses")
+}
+
+model Categorys {
+  id Int @id @default(autoincrement())
+  name String
+  college Colleges?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("categorys")
+}
+
+model Streets {
+  id Int @id @default(autoincrement())
+  name String
+  college Colleges?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("streets")
+}
