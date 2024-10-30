@@ -7,7 +7,8 @@
     "start": "node --watch src/server.js",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/**",
-    "build": "pnpm lint && tsup src"
+    "build": "pnpm lint && tsup src --tsconfig tsconfig.json",
+    "studio": "npx prisma studio"
   },
   "license": "ISC",
   "devDependencies": {
