@@ -26,6 +26,10 @@ model Colleges {
 model Courses {
   id Int @id @default(autoincrement())
   name String
+  graduation_type_id Int @unique
+  graduation GraduationType @relation(fields: [graduation_type_id], references: [id])
+  course_area String
+  teaching_modality String
   colleges Colleges[]
 
   created_at DateTime @default(now())
@@ -54,4 +58,14 @@ model Streets {
   updated_at DateTime @updatedAt
 
   @@map("streets")
+}
+model GraduationType {
+  id Int @id @default(autoincrement())
+  name String
+  course Courses?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("graduation_type")
 }
