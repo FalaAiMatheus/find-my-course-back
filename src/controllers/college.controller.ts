@@ -12,4 +12,13 @@ export class CollegeController {
       res.send(error);
     }
   }
+  async getCollege(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const data = await collegeService.findCollege(Number(id));
+      res.status(200).json(data);
+    } catch (error) {
+      res.send(error);
+    }
+  }
 }
