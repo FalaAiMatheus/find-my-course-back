@@ -7,6 +7,11 @@ export class CollegeService {
       where: { id: id },
     });
   }
+  async findCollegeByCategory(category_id: number) {
+    return await prisma.colleges.findMany({
+      where: { category_id: category_id },
+    });
+  }
   async allColleges(): Promise<Colleges[]> {
     return await prisma.colleges.findMany();
   }
