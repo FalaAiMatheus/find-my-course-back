@@ -1,11 +1,8 @@
-import getCollege from '@/routes/college/get-college';
-import getColleges from '@/routes/college/get-colleges';
-import getCategory from '@/routes/category/get-category';
-import getCategorys from '@/routes/category/get-categorys';
-import getStreet from '@/routes/street/get-street';
-import getStreets from '@/routes/street/get-streets';
-import getCourse from '@/routes/course/get-course';
-import getCourses from '@/routes/course/get-courses';
+import categoryRoutes from '@/routes/category';
+import collegeRoutes from '@/routes/college';
+import areaRoutes from '@/routes/course-area';
+import courseRoutes from '@/routes/course';
+import streetRoutes from '@/routes/street';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
@@ -16,14 +13,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(getColleges);
-app.use(getCollege);
-app.use(getCategory);
-app.use(getCategorys);
-app.use(getStreet);
-app.use(getStreets);
-app.use(getCourse);
-app.use(getCourses);
+app.use(categoryRoutes);
+app.use(collegeRoutes);
+app.use(courseRoutes);
+app.use(streetRoutes);
+app.use(areaRoutes);
 
 app.listen(process.env.PORT, () => {
   return `HTTPS Server is running on port: ${process.env.PORT}`;
