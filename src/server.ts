@@ -4,6 +4,8 @@ import getCategory from '@/routes/category/get-category';
 import getCategorys from '@/routes/category/get-categorys';
 import getStreet from '@/routes/street/get-street';
 import getStreets from '@/routes/street/get-streets';
+import getCourse from '@/routes/course/get-course';
+import getCourses from '@/routes/course/get-courses';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
@@ -20,6 +22,8 @@ app.use(getCategory);
 app.use(getCategorys);
 app.use(getStreet);
 app.use(getStreets);
+app.use(getCourse);
+app.use(getCourses);
 
 app.listen(process.env.PORT, () => {
   return `HTTPS Server is running on port: ${process.env.PORT}`;
